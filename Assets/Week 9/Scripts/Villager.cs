@@ -14,7 +14,7 @@ public class Villager : MonoBehaviour
 
     protected Vector2 destination;
     Vector2 movement;
-    float speed = 3;
+    public float speed = 3;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class Villager : MonoBehaviour
         clickingOnSelf = false;
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         movement = destination - (Vector2)transform.position;
 
