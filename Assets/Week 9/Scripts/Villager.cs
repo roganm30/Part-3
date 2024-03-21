@@ -14,7 +14,7 @@ public class Villager : MonoBehaviour
 
     protected Vector2 destination;
     Vector2 movement;
-    public float speed = 3;
+    protected float speed = 3;
 
     void Start()
     {
@@ -40,7 +40,7 @@ public class Villager : MonoBehaviour
         clickingOnSelf = false;
     }
 
-    protected virtual void FixedUpdate()
+    private void FixedUpdate()
     {
         movement = destination - (Vector2)transform.position;
 
@@ -58,12 +58,13 @@ public class Villager : MonoBehaviour
         if (movement.magnitude < 0.1)
         {
             movement = Vector2.zero;
+            speed = 3;
         }
 
         rb.MovePosition(rb.position + movement.normalized * speed * Time.deltaTime);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         //left click: move to the click location
         if (Input.GetMouseButtonDown(0) && isSelected && !clickingOnSelf)
