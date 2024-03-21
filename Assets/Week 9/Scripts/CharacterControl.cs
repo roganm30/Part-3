@@ -10,6 +10,7 @@ public class CharacterControl : MonoBehaviour
     public List<Villager> villagerList = new List<Villager>(); //open up the list
     public TMPro.TextMeshProUGUI currentSelection;
     public static CharacterControl Instance;
+    float interpolation;
     private void Start()
     {
         Instance = this;
@@ -31,11 +32,11 @@ public class CharacterControl : MonoBehaviour
         SetSelectedVillager(villagerList[value]);
     }
 
-    //private void Update()
-    //{
-    //    if(SelectedVillager != null)
-    //    {
-    //        currentSelection.text = SelectedVillager.GetType().ToString();
-    //    }
-    //}
+    public void Scale (Single scale)
+    {
+        if (SelectedVillager != null)
+        {
+            SelectedVillager.transform.localScale = Vector3.one * scale; //size changes but there is a weird bug that doesnt allow it to stay, not sure how to fix it
+        }
+    }
 }
