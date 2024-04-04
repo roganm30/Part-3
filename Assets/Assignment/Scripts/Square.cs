@@ -11,7 +11,7 @@ public class Square : MonoBehaviour
     bool onSelf;
     protected Vector2 destination;
     Vector2 movement;
-    protected float speed = 2.5f;
+    protected float speed = 4;
 
     void Start()
     {
@@ -48,7 +48,7 @@ public class Square : MonoBehaviour
         if (movement.magnitude < 0.1)
         {
             movement = Vector2.zero;
-            speed = 2.5f;
+            speed = 4;
         }
 
         rigidbody2d.MovePosition(rigidbody2d.position + movement.normalized * speed * Time.deltaTime);
@@ -58,6 +58,11 @@ public class Square : MonoBehaviour
     {
         return WhichItem.Square; //here there is no item which will reference only to square
                                  //in this situation, i am using square as the "default" and thus will make specific changes for the individual squares if needed
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        speed = 0;
     }
 
 }

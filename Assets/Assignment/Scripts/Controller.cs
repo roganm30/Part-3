@@ -26,4 +26,9 @@ public class Controller : MonoBehaviour // this will act as the parent class for
         ActiveSquare = square;
         ActiveSquare.Chosen(true);
     }
+
+    public void Chosen(int value)
+    {
+        ActivateSquare(squareList[value]);
+    }
 }

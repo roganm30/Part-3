@@ -26,14 +26,9 @@ public class Countdown : MonoBehaviour
     IEnumerator Timer()
     {
         time += Time.deltaTime * speed;
-        time = time % 10;
-        // i want the time to increase until it reaches 10, eventually ending the game
+        time = time % 100;
+        // i want the time to increase until it reaches 10, eventually ending the game <--- edit: this changed
         clock.value = time;
-
-        if (time >= 10f)
-        {
-            score = 0;
-        }
 
         yield return null;
     }
